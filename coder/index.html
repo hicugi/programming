@@ -1,0 +1,31 @@
+<title>Coder</title>
+
+<link rel="stylesheet" href="style.css" />
+
+<div class="container">
+	<div class="preview-container">
+		<div class="preview" id="preview"></div>
+	</div>
+	<form id="form" class="editor">
+		<textarea id="code" autocomplete="off" autocorrect="off"></textarea>
+		<button>submit</button>
+	</form>
+</div>
+
+<script>
+	function submit() {
+		const { value } = code;
+		preview.innerHTML = value;
+	}
+
+	document.body.addEventListener("keypress", (e) => {
+		const { ctrlKey, key } = e;
+		if (!ctrlKey || key !== "Enter") return;
+
+		submit();
+	});
+	form.addEventListener("submit", (e) => {
+		e.preventDefault();
+		submit();
+	});
+</script>
